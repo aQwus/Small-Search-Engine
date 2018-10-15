@@ -1,0 +1,15 @@
+No webpage contains word delhi
+stack_datastructure_wiki
+stack_datastructure_wiki
+Webpage stack_datastructure_wiki does not contain word magazines
+No webpage contains word allain
+stack_cprogramming
+stack_cprogramming
+stack_cprogramming
+No webpage stack_oracle found
+8, 12, 18, 27, 46, 68, 76, 85, 100, 116, 140
+stack_oracle
+stack_datastructure_wiki, stack_cprogramming, stackoverflow
+stackmagazine
+6
+file named stack doesn't exist
