@@ -1,3 +1,5 @@
+import java.util.*;
+
 class MySet<X>{
 
   MyLinkedList<X> l = new MyLinkedList<X>();
@@ -65,4 +67,30 @@ class MySet<X>{
     }
     return false;
   }
+
+  public int setSize(){
+    int c = 0;
+    Node<X> temp = this.l.head;
+    while(temp != null){
+      c++;
+      temp = temp.next;
+    }
+    return c;
+  }
+
+  public void printPageSet(){
+    String s = "";
+    Node<X> temp = this.l.head;
+    if(temp != null) {
+      s += ((PageEntry)temp.data).getPageName();
+      temp = temp.next;
+
+      while(temp != null){
+        s += ", " + ((PageEntry)temp.data).getPageName();
+        temp = temp.next;
+      }
+      System.out.println(s);
+    } else System.out.println("No webpage found which contains given arguments");
+  }
+
 }

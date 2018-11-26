@@ -27,7 +27,7 @@ class MyLinkedList<X>{
   public void Insert(X ele){
       if(this.head == null){
         this.head = new Node<X>(ele);
-      } else {
+      } else if(!(IsPresent(ele))) {
         Node<X> temp = this.head;
         while(temp.next != null){
           temp = temp.next;
@@ -38,11 +38,17 @@ class MyLinkedList<X>{
 
   public void Delete(X ele){
     Node<X> temp = this.head;
-    while(temp.next.data != ele){
+    if(temp.data.equals(ele)){
+      head = temp.next;
+      return;
+    }
+    while(temp.next != null && !(temp.next.data.equals(ele))){
       temp = temp.next;
     }
-    if(temp.next.data == ele){
-      temp.next = temp.next.next;
+    if(temp.next != null){
+      if(temp.next.data.equals(ele)){
+        temp.next = temp.next.next;
+      }
     }
   }
 
@@ -62,6 +68,15 @@ class MyLinkedList<X>{
       temp = temp.next;
     }
     return null;
+  }
+
+  public Boolean containsPosition(int i){
+    Node<X> temp = this.head;
+    while(temp != null){
+      if(((Position)temp.data).getWordIndex() == i) return true;
+      temp = temp.next;
+    }
+    return false;
   }
 }
 

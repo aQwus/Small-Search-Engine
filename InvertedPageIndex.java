@@ -43,4 +43,43 @@ class InvertedPageIndex{
     }
     return null;
   }
+
+  public MySet<PageEntry> getPagesWhichContainAllWords(String str[]){
+    if(str.length > 0){
+      MySet<PageEntry> aPages = getPagesWhichContainWord(str[0]);
+      for(int i=1; i<str.length;i++){
+        aPages = aPages.intersection(getPagesWhichContainWord(str[i]));
+      }
+      return aPages;
+    }
+    return null;
+  }
+
+  public MySet<PageEntry> getPagesWhichContainAnyOfTheseWords(String str[]){
+    if(str.length > 0){
+      MySet<PageEntry> aPages = getPagesWhichContainWord(str[0]);
+      for(int i=1; i<str.length;i++){
+        aPages = aPages.union(getPagesWhichContainWord(str[i]));
+      }
+      return aPages;
+    }
+    return null;
+  }
+
+  public MySet<PageEntry> getPagesWhichContainPhrase(String str[]){
+    MySet<PageEntry> aPages = getPagesWhichContainAllWords(str);
+    Node<PageEntry> temp = aPages.l.head;
+
+    while(temp != null){
+      AVL posTree = (temp.data).getPositionInThisPageOf(str[0]);
+      if((temp.data).containsPhrase(posTree.root, str)) temp = temp.next;
+      else{
+        Node<PageEntry> temp2 = temp.next;
+        aPages.l.Delete(temp.data);
+        temp = temp2;
+      }
+    }
+    return aPages;
+  }
+
 }

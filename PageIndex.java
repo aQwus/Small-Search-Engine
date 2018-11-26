@@ -6,7 +6,7 @@ class PageIndex{
   }
 
   void addPositionForWord(String str, Position p){
-    int c = 0;
+    int c = 0; // 0 -> position not added; 1 -> position added
     Node<WordEntry> temp;
 
     try{
